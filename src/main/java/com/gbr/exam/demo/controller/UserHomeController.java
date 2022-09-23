@@ -10,39 +10,28 @@ public class UserHomeController {
 	private int count;
 	
 	public UserHomeController() {
-		count = 0;
+		count = -1;
 	}
 	
-	@RequestMapping("/user/home/main")
+	// 현재 카운트의 값 받아오기
+	@RequestMapping("/user/home/getCount")
 	@ResponseBody
-	public String showMain() {
-		return "하ㅓ하하하하하잉 푸헹헹";
-	}
-	
-	@RequestMapping("/user/home/main2")
-	@ResponseBody
-	public String showMain2() {
-		return "반갑소";
-	}
-	
-	@RequestMapping("/user/home/main3")
-	@ResponseBody
-	public String showMain3() {
-		return "조심해서 가시오";
+	public int getCount() {
+		return count;
 	}	
 	
-	// 새로고침 할 때마다 숫자 증가
-	@RequestMapping("/user/home/main4")
+	// count의 값을 매개변수(count) 이용하여 바꿔주기
+	@RequestMapping("/user/home/doSetCount")
 	@ResponseBody
-	public int showMain4() {
-		return count++;
-	}	
-	
-	// count 값 초기화
-	@RequestMapping("/user/home/main5")
-	@ResponseBody
-	public String showMain5() {
-		count = 0;
-		return "count의 값이 0으로 초기화 됨 ! ";
+	public String doSetCount(int count) {
+		
+		// count가 옵션이 됨. !!.. ㅠ .ㅠ.ㅠ.ㅠ.ㅠ...
+		// http://localhost:8081/user/home/doSetCount?count=10
+		
+		this.count = count;
+		return "count의 값이"+ this.count + "(으)로 초기화 됨 ! ";
+		
+		
+		
 	}
 }
