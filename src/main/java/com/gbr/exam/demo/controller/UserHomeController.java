@@ -6,6 +6,13 @@ import org.springframework.web.bind.annotation.ResponseBody;
 
 @Controller
 public class UserHomeController {
+	
+	private int count;
+	
+	public UserHomeController() {
+		count = 0;
+	}
+	
 	@RequestMapping("/user/home/main")
 	@ResponseBody
 	public String showMain() {
@@ -22,5 +29,12 @@ public class UserHomeController {
 	@ResponseBody
 	public String showMain3() {
 		return "조심해서 가시오";
+	}	
+	
+	// 새로고침 할 때마다 숫자 증가
+	@RequestMapping("/user/home/main4")
+	@ResponseBody
+	public int showMain4() {
+		return count++;
 	}
 }
