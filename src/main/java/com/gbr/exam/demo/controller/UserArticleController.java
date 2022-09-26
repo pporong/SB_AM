@@ -53,7 +53,6 @@ public class UserArticleController {
 	}
 	
 	// 수정
-
 	private void modifyArticle(int id, String title, String body) {
 		Article article = getArticle(id);
 		
@@ -99,7 +98,7 @@ public class UserArticleController {
 		Article article = getArticle(id);
 
 		if (article == null) {
-			return id + " 번 게시물은 존재하지 않습니다. :( )";
+			return id + " 번 게시물은 존재하지 않습니다. :( ";
 		}
 
 		deleteArticle(id);
@@ -110,18 +109,34 @@ public class UserArticleController {
 	// Modify
 	@RequestMapping("/user/article/doModify")
 	@ResponseBody
-	public String doModify(int id, String title, String body) {
+	public Object doModify(int id, String title, String body) {
 
 		Article article = getArticle(id);
 
 		if (article == null) {
-			return id + " 번 게시물은 존재하지 않습니다. :( )";
+			return id + " 번 게시물은 존재하지 않습니다. :(";
 		}
 
 		modifyArticle(id, title, body);
 
-		return id + " 번 게시물이 수정되었습니다. :)";
+		return article;
 	}
+	
+	// Detail
+	@RequestMapping("/user/article/getArticle")
+	@ResponseBody
+	public Object getArticleAction(int id) {
+
+		Article article = getArticle(id);
+
+		if (article == null) {
+			return id + " 번 게시물은 존재하지 않습니다. :( ";
+		}
+
+		return article;
+	}
+
+
 
 
 
