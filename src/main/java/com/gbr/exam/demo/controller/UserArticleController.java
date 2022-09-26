@@ -7,6 +7,8 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 
+import com.gbr.exam.demo.vo.Article;
+
 @Controller
 public class UserArticleController {
 	
@@ -18,6 +20,7 @@ public class UserArticleController {
 		articles = new ArrayList<>();
 	}
 	
+	// Add
 	@RequestMapping("/user/article/doAdd")
 	@ResponseBody
 	public Article doAdd(String title, String body) {
@@ -28,6 +31,13 @@ public class UserArticleController {
 		lastArticleId = id;
 		
 		return article;
+	}
+	
+	// articles
+	@RequestMapping("/user/article/getArticles")
+	@ResponseBody
+	public List<Article> getArticles() {
+		return articles ;
 	}
 
 
