@@ -24,7 +24,7 @@ public class UserArticleController {
 		makeTestData();
 	}
 
-	// ========================== Service Method ==========================
+	/* ========================== Service Method == */
 	private void makeTestData() {
 		for (int i = 1; i <= 10; i++) {
 			String title = "제목 " + i;
@@ -43,14 +43,24 @@ public class UserArticleController {
 
 		return null;
 	}
-
+	
+	// 삭제
 	private void deleteArticle(int id) {
 
 		Article article = getArticle(id);
 
 		articles.remove(article);
 	}
+	
+	// 수정
 
+	private void modifyArticle(int id, String title, String body) {
+		Article article = getArticle(id);
+		
+		article.setTitle(title);
+		article.setBody(body);	
+	}
+	
 	// write
 	private Article writeArticle(String title, String body) {
 
@@ -63,7 +73,8 @@ public class UserArticleController {
 		return article;
 	}
 
-	// ========================== Action Method
+	/* ========================== Action Method == */
+	
 	// Add
 	@RequestMapping("/user/article/doAdd")
 	@ResponseBody
@@ -96,6 +107,22 @@ public class UserArticleController {
 		return id + " 번 게시물이 삭제되었습니다. :)";
 	}
 	
-	
+	// Modify
+	@RequestMapping("/user/article/doModify")
+	@ResponseBody
+	public String doModify(int id, String title, String body) {
+
+		Article article = getArticle(id);
+
+		if (article == null) {
+			return id + " 번 게시물은 존재하지 않습니다. :( )";
+		}
+
+		modifyArticle(id, title, body);
+
+		return id + " 번 게시물이 수정되었습니다. :)";
+	}
+
+
 
 }
