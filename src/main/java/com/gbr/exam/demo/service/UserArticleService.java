@@ -19,12 +19,7 @@ public class UserArticleService {
 	}
 	
 	/* == Service Method == */
-	
-	public Article getArticle(int id) {
-		return articleRepository.getArticle(id);
-	}
-	
-	//
+	// list
 	public List<Article> getArticles() {
 		return articleRepository.getArticles();
 	}
@@ -34,14 +29,19 @@ public class UserArticleService {
 		return articleRepository.writeArticle(title, body);
 	}
 	
-	// 삭제
+	// delete
 	public void deleteArticle(int id) {
 		articleRepository.deleteArticle(id);
 	}
 
-	// 수정
+	// modify
 	public void modifyArticle(int id, String title, String body) {
 		articleRepository.modifyArticle(id, title, body);
+	}
+	
+	// detail
+	public Article getArticle(int id) {
+		return articleRepository.getArticle(id);
 	}
 
 
