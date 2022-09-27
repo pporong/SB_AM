@@ -15,7 +15,6 @@ public class UserArticleService {
 	
 	public UserArticleService(ArticleRepository articleRepository) {
 		this.articleRepository = articleRepository;
-		articleRepository.makeTestData();
 	}
 	
 	/* == Service Method == */
@@ -25,8 +24,14 @@ public class UserArticleService {
 	}
 	
 	// write
-	public Article writeArticle(String title, String body) {
-		return articleRepository.writeArticle(title, body);
+	public int writeArticle(String title, String body) {
+		articleRepository.writeArticle(title, body);	
+		return articleRepository.getLastInsertId();
+	}
+	
+	// detail
+	public Article getArticle(int id) {
+		return articleRepository.getArticle(id);
 	}
 	
 	// delete
@@ -38,11 +43,5 @@ public class UserArticleService {
 	public void modifyArticle(int id, String title, String body) {
 		articleRepository.modifyArticle(id, title, body);
 	}
-	
-	// detail
-	public Article getArticle(int id) {
-		return articleRepository.getArticle(id);
-	}
-
 
 }

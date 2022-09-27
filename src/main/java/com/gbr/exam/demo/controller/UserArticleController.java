@@ -19,11 +19,13 @@ public class UserArticleController {
 	
 	/* == Action Method == */
 	
-	// Add
+	// Add = write
 	@RequestMapping("/user/article/doAdd")
 	@ResponseBody
 	public Article doAdd(String title, String body) {
-		Article article = userArticleService.writeArticle(title, body);
+		int id = userArticleService.writeArticle(title, body);
+		
+		Article article = userArticleService.getArticle(id);
 
 		return article;
 	}
@@ -70,7 +72,7 @@ public class UserArticleController {
 	// Detail
 	@RequestMapping("/user/article/getArticle")
 	@ResponseBody
-	public Object getArticleAction(int id) {
+	public Object getArticle(int id) {
 
 		Article article = userArticleService.getArticle(id);
 
