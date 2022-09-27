@@ -11,8 +11,8 @@ import com.gbr.exam.demo.vo.Article;
 public class UserArticleService {
 
 	// 인스턴스 변수
-	private static int lastArticleId;
-	private static List<Article> articles;
+	private int lastArticleId;
+	private List<Article> articles;
 	
 	// 생성자
 	public UserArticleService() {
@@ -24,7 +24,8 @@ public class UserArticleService {
 	}
 
 	/* ========================== Service Method == */
-	public static void makeTestData() {
+	
+	public void makeTestData() {
 		for (int i = 1; i <= 10; i++) {
 			String title = "제목 " + i;
 			String body = "내용 " + i;
@@ -33,7 +34,7 @@ public class UserArticleService {
 		}
 	}
 
-	public static Article getArticle(int id) {
+	public Article getArticle(int id) {
 		for (Article article : articles) {
 			if (article.getId() == id) {
 				return article;
@@ -44,7 +45,7 @@ public class UserArticleService {
 	}
 	
 	// 삭제
-	public static void deleteArticle(int id) {
+	public void deleteArticle(int id) {
 
 		Article article = getArticle(id);
 
@@ -52,7 +53,7 @@ public class UserArticleService {
 	}
 	
 	// 수정
-	public static void modifyArticle(int id, String title, String body) {
+	public void modifyArticle(int id, String title, String body) {
 		Article article = getArticle(id);
 		
 		article.setTitle(title);
@@ -60,15 +61,21 @@ public class UserArticleService {
 	}
 	
 	// write
-	public static Article writeArticle(String title, String body) {
+	public Article writeArticle(String title, String body) {
 
 		int id = lastArticleId + 1;
 
 		Article article = new Article(id, title, body);
+		
 		articles.add(article);
 		lastArticleId = id;
 
 		return article;
+	}
+
+	// 
+	public List<Article> articles() {
+		return articles;
 	}
 	
 

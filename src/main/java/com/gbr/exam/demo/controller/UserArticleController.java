@@ -1,6 +1,5 @@
 package com.gbr.exam.demo.controller;
 
-import java.util.ArrayList;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -24,7 +23,7 @@ public class UserArticleController {
 	@RequestMapping("/user/article/doAdd")
 	@ResponseBody
 	public Article doAdd(String title, String body) {
-		Article article = UserArticleService.writeArticle(title, body);
+		Article article = userArticleService.writeArticle(title, body);
 
 		return article;
 	}
@@ -33,7 +32,7 @@ public class UserArticleController {
 	@RequestMapping("/user/article/getArticles")
 	@ResponseBody
 	public List<Article> getArticles() {
-		return articles;
+		return userArticleService.articles();
 	}
 
 	// Delete
@@ -41,13 +40,13 @@ public class UserArticleController {
 	@ResponseBody
 	public String doDelete(int id) {
 
-		Article article = getArticle(id);
+		Article article = userArticleService.getArticle(id);
 
 		if (article == null) {
 			return id + " 번 게시물은 존재하지 않습니다. :( ";
 		}
 
-		UserArticleService.deleteArticle(id);
+		userArticleService.deleteArticle(id);
 
 		return id + " 번 게시물이 삭제되었습니다. :)";
 	}
@@ -57,13 +56,13 @@ public class UserArticleController {
 	@ResponseBody
 	public Object doModify(int id, String title, String body) {
 
-		Article article = getArticle(id);
+		Article article = userArticleService.getArticle(id);
 
 		if (article == null) {
 			return id + " 번 게시물은 존재하지 않습니다. :(";
 		}
 
-		UserArticleService.modifyArticle(id, title, body);
+		userArticleService.modifyArticle(id, title, body);
 
 		return article;
 	}
@@ -73,7 +72,7 @@ public class UserArticleController {
 	@ResponseBody
 	public Object getArticleAction(int id) {
 
-		Article article = getArticle(id);
+		Article article = userArticleService.getArticle(id);
 
 		if (article == null) {
 			return id + " 번 게시물은 존재하지 않습니다. :( ";
@@ -81,10 +80,5 @@ public class UserArticleController {
 
 		return article;
 	}
-
-
-
-
-
 
 }
