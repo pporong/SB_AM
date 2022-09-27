@@ -17,7 +17,7 @@ public class UserArticleController {
 	@Autowired
 	private UserArticleService userArticleService;
 	
-	/* ========================== Action Method == */
+	/* == Action Method == */
 	
 	// Add
 	@RequestMapping("/user/article/doAdd")
@@ -32,7 +32,7 @@ public class UserArticleController {
 	@RequestMapping("/user/article/getArticles")
 	@ResponseBody
 	public List<Article> getArticles() {
-		return userArticleService.articles();
+		return userArticleService.getArticles();
 	}
 
 	// Delete
