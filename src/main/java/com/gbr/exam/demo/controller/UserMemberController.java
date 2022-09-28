@@ -17,11 +17,11 @@ public class UserMemberController {
 	@Autowired
 	private UserMemberService userMemberService;
 
-	private int lastArticleId;
+	private int lastMemberId;
 	private List<Member> members;		
 
 	public UserMemberController() {
-		lastArticleId = 0;
+		lastMemberId = 0;
 		members = new ArrayList<>();
 	}
 	
@@ -29,8 +29,6 @@ public class UserMemberController {
 	@RequestMapping("/user/member/doJoin")
 	@ResponseBody
 	public List<Member> doJoin(String loginId, String loginPw, String name, String nickname, String cellphoneNum, String email) {
-		int id = lastArticleId +1;
-		
 		userMemberService.join(loginId, loginPw, name, nickname, cellphoneNum, email);
 		
 		return members;
