@@ -15,4 +15,7 @@ public class Article {
 	String body;
 	LocalDateTime regDate;
 	LocalDateTime updateDate;
+	
+	
+
 }
