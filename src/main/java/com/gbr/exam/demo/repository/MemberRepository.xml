@@ -35,12 +35,16 @@
 <!-- 		WHERE id = #{id} -->
 <!-- 	</update> -->
 	
-<!-- 	<select id="getLastInsertId" resultType="int"> -->
+<!-- 	<select id="getLastInsertId" resultType="Member"> -->
 <!-- 		SELECT LAST_INSERT_ID() -->
 <!-- 	</select> -->
 
-<!-- 	<select id="getLastInsertId" resultType="int"> -->
-<!-- 		SELECT LAST_INSERT_ID() -->
+<!-- 	<select id="getMemberById" resultType="int"> -->
+<!-- 		SELECT *FROM `member` AS M WHERE M.id = #{id} -->
+<!-- 	</select> -->
+
+<!-- 	<select id="getMemberByLoginId" resultType="int"> -->
+<!-- 		SELECT * FROM `member` AS M WHERE M.loginId = #{loginId} -->
 <!-- 	</select> -->
 	
 	</mapper>
