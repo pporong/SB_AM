@@ -1,15 +1,14 @@
 package com.gbr.exam.demo.repository;
 
-import java.util.List;
-
 import org.apache.ibatis.annotations.Insert;
 import org.apache.ibatis.annotations.Mapper;
+import org.apache.ibatis.annotations.Select;
 
 import com.gbr.exam.demo.vo.Member;
 
-
 @Mapper
 public interface MemberRepository {
+
 	@Insert("""
 			INSERT INTO `member`
 			SET regDate = NOW(),
@@ -23,9 +22,15 @@ public interface MemberRepository {
 				""")
 	public void join(String loginId, String loginPw, String name, String nickname, String cellphoneNum, String email);
 	
-	public List<Member> getMembers();
+	@Select("SELECT LAST_INSERT_ID()")
+	public int getLastInsertId();
 	
-	public Member getMember(int id);
+	@Select("""
+			SELECT *
+			FROM `member` AS M
+			WHERE M.id = #{id}
+				""")
+	Member getMemberById(int id);
 
 
 }

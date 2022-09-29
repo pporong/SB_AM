@@ -13,12 +13,12 @@
 <!-- 	    email = #{email} -->
 <!-- 	</insert> -->
 	
-<!-- 	<select id="getArticles" resultType="Article"> -->
-<!-- 		SELECT * FROM article ORDER BY id DESC -->
+<!-- 	<select id="getMembers" resultType="Member"> -->
+<!-- 		SELECT * FROM `member` ORDER BY id DESC -->
 <!-- 	</select> -->
 	
-<!-- 	<select id ="getArticle" resultType="Article"> -->
-<!-- 		SELECT * FROM article WHERE id = #{id} -->
+<!-- 	<select id ="getMember" resultType="Member"> -->
+<!-- 		SELECT * FROM `member` WHERE id = #{id} -->
 <!-- 	</select> -->
 	
 <!-- 	<delete id="deleteArticle"> -->

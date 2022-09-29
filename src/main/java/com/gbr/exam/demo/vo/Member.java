@@ -10,16 +10,16 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor
 @AllArgsConstructor
 public class Member {
-	int id;
-	int authlevel;
-	String loginId;
-	String loginPw;
-	String name;
-	String nickname;
-	String cellphoneNo;
-	String email;
-	LocalDateTime regDate;
-	LocalDateTime updateDate;
-	LocalDateTime delDate;
-	int delStatus;
+	private int id;
+	private LocalDateTime regDate;
+	private LocalDateTime updateDate;
+	private String loginId;
+	private String loginPw;
+	private int authlevel;
+	private String name;
+	private String nickname;
+	private String cellphoneNum;
+	private String email;
+	private boolean delStatus;
+	private LocalDateTime delDate;
 }
