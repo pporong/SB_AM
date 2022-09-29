@@ -10,17 +10,17 @@ import com.gbr.exam.demo.vo.Member;
 
 @Mapper
 public interface MemberRepository {
-	
-	@Insert(""" 
-		INSERT INTO `member`
-	    updateDate = NOW(),
-	    loginId = #{loginId},
-	    loginPw = #{loginPw},
-	    `name` = '#{name},
-	    nickname = #{nickname},
-	    cellphoneNum = #{cellphoneNum},
-	    email = #{email};
-			""")
+	@Insert("""
+			INSERT INTO `member`
+			SET regDate = NOW(),
+			updateDate = NOW(),
+			loginId = #{loginId},
+			loginPw = #{loginPw},
+			`name` = #{name},
+			nickname = #{nickname},
+			cellphoneNum = #{cellphoneNum},
+			email = #{email}
+				""")
 	public void join(String loginId, String loginPw, String name, String nickname, String cellphoneNum, String email);
 	
 	public List<Member> getMembers();

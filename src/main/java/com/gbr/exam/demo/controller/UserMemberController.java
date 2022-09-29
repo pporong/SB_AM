@@ -28,10 +28,10 @@ public class UserMemberController {
 	// join
 	@RequestMapping("/user/member/doJoin")
 	@ResponseBody
-	public List<Member> doJoin(String loginId, String loginPw, String name, String nickname, String cellphoneNum, String email) {
+	public String doJoin(String loginId, String loginPw, String name, String nickname, String cellphoneNum, String email) {
 		userMemberService.join(loginId, loginPw, name, nickname, cellphoneNum, email);
 		
-		return members;
+		return "가ㅓ입완료";
 	}
 
 }
