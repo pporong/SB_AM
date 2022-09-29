@@ -36,6 +36,9 @@ public class UserMemberController {
 		}
 		
 		int id = userMemberService.join(loginId, loginPw, name, nickname, cellphoneNum, email);
+		// resultCode = S-1
+		// msg = 성공!
+		// data1 = 비고
 		
 		if (id == -1) {
 			return Ut.f("!![%s] 은(는) 이미 사용중인 아이디 입니다. :( !!", loginId);
