@@ -19,20 +19,22 @@ public class UserMemberService {
 		
 		// loginId 중복 체크
 		Member existsMember = getMemberByLoginId(loginId);
-		
 		if (existsMember != null) {
 			return -1;
 		}
 		
 		// 이름 + 이메일 중복 체크
-		
-		
-		
+		existsMember = getMemberByNameAndEmail(name, email);
+		if (existsMember != null) {
+			return -2;
+		}
+	
 		memberRepository.join(loginId, loginPw, name, nickname, cellphoneNum, email);
 		
 		return memberRepository.getLastInsertId();
 	}
 	
+
 	private Member getMemberByLoginId(String loginId) {
 		return memberRepository.getMemberByLoginId(loginId);
 	}
@@ -40,4 +42,9 @@ public class UserMemberService {
 	public Member getMemberById(int id) {
 		return memberRepository.getMemberById(id);
 	}
+	
+	public Member getMemberByNameAndEmail(String name, String email) {
+		return memberRepository.getMemberByNameAndEmail(name, email);
+	}
+	
 }
