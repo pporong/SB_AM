@@ -42,10 +42,10 @@ public interface MemberRepository {
 	@Select("""
 			SELECT *
 			FROM `member` AS M
-			WHERE M.nickname = #{nickname}
-			OR M.email = #{email}
+			WHERE M.name = #{name}
+			AND M.email = #{email}
 				""")
-	public Member getMemberByNameAndEmail(String name, String email);
+	Member getMemberByNameAndEmail(String name, String email);
 
 
 }
