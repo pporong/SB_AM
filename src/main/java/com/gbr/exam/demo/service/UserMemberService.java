@@ -17,11 +17,16 @@ public class UserMemberService {
 
 	public int join(String loginId, String loginPw, String name, String nickname, String cellphoneNum, String email) {
 		
+		// loginId 중복 체크
 		Member existsMember = getMemberByLoginId(loginId);
 		
 		if (existsMember != null) {
 			return -1;
 		}
+		
+		// 이름 + 이메일 중복 체크
+		
+		
 		
 		memberRepository.join(loginId, loginPw, name, nickname, cellphoneNum, email);
 		
