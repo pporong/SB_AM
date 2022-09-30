@@ -16,7 +16,7 @@ public class Ut {
 		return str.trim().length() == 0;
 	}
 
-	public static Object f(String fromat, Object... args) {
+	public static String f(String fromat, Object... args) {
 		
 		return String.format(fromat, args);
 	}
