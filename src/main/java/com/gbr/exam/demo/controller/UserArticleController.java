@@ -43,8 +43,10 @@ public class UserArticleController {
 	// list = articles
 	@RequestMapping("/user/article/getArticles")
 	@ResponseBody
-	public List<Article> getArticles() {
-		return userArticleService.getArticles();
+	public ResultData getArticles() {
+		List<Article> articles = userArticleService.getArticles();
+		
+		return ResultData.from("S-1", "Article List" , articles);
 	}
 
 	// Delete

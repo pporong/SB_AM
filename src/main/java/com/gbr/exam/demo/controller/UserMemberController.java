@@ -45,10 +45,10 @@ public class UserMemberController {
 			return ResultData.from("F-1", Ut.f("!![%s] 은(는) 이미 사용중인 아이디 입니다. :( !!", loginId));
 		}		
 		if (id == -2) {
-			return ResultData.from("F-1", Ut.f("!! 이미 사용중인 이름[%s] 입니다. :( !!"), name);
+			return ResultData.from("F-1", Ut.f("!! 이미 사용중인 이름 [%s] 입니다. :( !!", name));
 		}		
 		if (id == -2) {
-			return ResultData.from("F-1", Ut.f("!! 이미 사용중인 이메일[%s] 입니다. :( !!"), email);
+			return ResultData.from("F-1", Ut.f("!! 이미 사용중인 이메일 [%s] 입니다. :( !!", email));
 		}	
 			
 		Member member = userMemberService.getMemberById(id);
