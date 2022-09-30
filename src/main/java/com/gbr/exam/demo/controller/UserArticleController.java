@@ -26,9 +26,9 @@ public class UserArticleController {
 	@ResponseBody
 	public ResultData doAdd(String title, String body) {
 		if (Ut.empty(title)) {
-			return ResultData.from("F-1", "!! 제목이 입력되지 않았습니다. !!");
+			return ResultData.from("F-1", "!! 제목이 입력되지 않았습니다. 입력 해 주세요 !!");
 		} if (Ut.empty(body)) {
-			return ResultData.from("F-2", "!! 내용이 입력되지 않았습니다. !!");
+			return ResultData.from("F-2", "!! 내용이 입력되지 않았습니다. 입력 해 주세요 !!");
 		}
 		
 		ResultData writeArticleRd = userArticleService.writeArticle(title, body);

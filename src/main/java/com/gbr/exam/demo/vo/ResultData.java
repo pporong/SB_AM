@@ -29,7 +29,11 @@ public class ResultData {
 	public boolean isSuccess() {
 		return resultCode.startsWith("S-");
 	}
-	public boolean ifFail() {
+	public boolean isFail() {
 		return isSuccess() == false;
+	}
+
+	public static ResultData newData(ResultData joinRd, Object newData) {
+		return from(joinRd.getResultCode(), joinRd.getMsg(), newData);
 	}
 }
