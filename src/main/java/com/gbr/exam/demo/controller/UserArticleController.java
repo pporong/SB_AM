@@ -24,12 +24,20 @@ public class UserArticleController {
 	// Add = write
 	@RequestMapping("/user/article/doAdd")
 	@ResponseBody
-	public Article doAdd(String title, String body) {
-		int id = userArticleService.writeArticle(title, body);
+	public ResultData doAdd(String title, String body) {
+		if (Ut.empty(title)) {
+			return ResultData.from("F-1", "!! 제목이 입력되지 않았습니다. !!");
+		} if (Ut.empty(body)) {
+			return ResultData.from("F-2", "!! 내용이 입력되지 않았습니다. !!");
+		}
+		
+		ResultData writeArticleRd = userArticleService.writeArticle(title, body);
 
+		int id = (int) writeArticleRd.getData1();
+		
 		Article article = userArticleService.getArticle(id);
-
-		return article;
+		
+		return ResultData.from(writeArticleRd.getResultCode(), writeArticleRd.getMsg(), article);
 	}
 
 	// list = articles
