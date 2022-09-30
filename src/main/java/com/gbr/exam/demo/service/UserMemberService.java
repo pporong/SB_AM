@@ -17,7 +17,7 @@ public class UserMemberService {
 		this.memberRepository = memberRepository;
 	}
 
-	public ResultData join(String loginId, String loginPw, String name, String nickname, String cellphoneNum, String email) {
+	public ResultData<Integer> join(String loginId, String loginPw, String name, String nickname, String cellphoneNum, String email) {
 		
 		// loginId 중복 체크
 		Member existsMember = getMemberByLoginId(loginId);
