@@ -13,6 +13,7 @@ import com.gbr.exam.demo.vo.ResultData;
 @Controller
 public class UserMemberController {
 	
+	// 인스턴스변수
 	@Autowired
 	private UserMemberService userMemberService;	
 	

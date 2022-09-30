@@ -19,8 +19,6 @@ public class UserArticleController {
 	@Autowired
 	private UserArticleService userArticleService;
 
-	/* == Action Method == */
-
 	// Add = write
 	@RequestMapping("/user/article/doAdd")
 	@ResponseBody
@@ -37,13 +35,13 @@ public class UserArticleController {
 		
 		Article article = userArticleService.getArticle(id);
 		
-		return ResultData.from(writeArticleRd.getResultCode(), writeArticleRd.getMsg(), article);
+		return ResultData.newData(writeArticleRd, article);
 	}
 
 	// list = articles
 	@RequestMapping("/user/article/getArticles")
 	@ResponseBody
-	public ResultData getArticles() {
+	public ResultData<List<Article>> getArticles() {
 		List<Article> articles = userArticleService.getArticles();
 		
 		return ResultData.from("S-1", "Article List" , articles);
