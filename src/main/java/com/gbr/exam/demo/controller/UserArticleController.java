@@ -64,12 +64,25 @@ public class UserArticleController {
 	// Delete
 	@RequestMapping("/user/article/doDelete")
 	@ResponseBody
-	public ResultData<Integer> doDelete(int id) {
+	public ResultData<Integer> doDelete(HttpSession httpsession, int id) {
+		boolean isLogined = false;
+		int loginedMemberId = 0;
 
+		// 로그인 여부
+		if (httpsession.getAttribute("loginedMemberId") != null) {
+			isLogined = true;
+			loginedMemberId = (int) httpsession.getAttribute("loginedMemberId");
+		} // 이미 로그아웃 상태
+		if (isLogined == false) {
+			return ResultData.from("F-A", "!! 로그인 후 이용 해 주세요. !!");
+		}
 		Article article = userArticleService.getArticle(id);
 
 		if (article == null) {
 			return ResultData.from("F-1", Ut.f("!! %d번 게시물은 존재하지 않습니다. !!", id), id);
+		} // 삭제 권한 체크
+		if (article.getMemberId() != loginedMemberId) {
+			return ResultData.from("F-B", "!! 삭제 권한이 없습니다. !!");
 		}
 
 		userArticleService.deleteArticle(id);
@@ -79,12 +92,26 @@ public class UserArticleController {
 	// Modify
 	@RequestMapping("/user/article/doModify")
 	@ResponseBody
-	public ResultData<Integer> doModify(int id, String title, String body) {
+	public ResultData<Integer> doModify(HttpSession httpsession, int id, String title, String body) {
+		boolean isLogined = false;
+		int loginedMemberId = 0;
 
+		// 로그인 여부
+		if (httpsession.getAttribute("loginedMemberId") != null) {
+			isLogined = true;
+			loginedMemberId = (int) httpsession.getAttribute("loginedMemberId");
+		} // 이미 로그아웃 상태
+		if (isLogined == false) {
+			return ResultData.from("F-A", "!! 로그인 후 이용 해 주세요. !!");
+		}
 		Article article = userArticleService.getArticle(id);
+
 
 		if (article == null) {
 			return ResultData.from("F-1", Ut.f("!! %d번 게시물은 존재하지 않습니다. !!", id), id);
+		} // 수정 권한 체크
+		if (article.getMemberId() != loginedMemberId) {
+			return ResultData.from("F-B", "!! 수정 권한이 없습니다. !!");
 		}
 
 		userArticleService.modifyArticle(id, title, body);
