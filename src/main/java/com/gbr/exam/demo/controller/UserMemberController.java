@@ -58,18 +58,19 @@ public class UserMemberController {
 	// login
 	@RequestMapping("/user/member/doLogin")
 	@ResponseBody
-	public ResultData<Member> doLogin(HttpSession httpsession, String loginId, String loginPw) {
-		
+	public ResultData doLogin(HttpSession httpsession, String loginId, String loginPw) {
+
 		boolean isLogined = false;
-		
+
 		// 로그인 여부
 		if (httpsession.getAttribute("loginedMemberId") != null) {
 			isLogined = true;
-		}
+		} // 이미 로그인 상태
 		if (isLogined) {
 			return ResultData.from("F-5", "!! 이미 로그인 상태입니다. !!");
 		}
-		
+
+		// ID 받기
 		if (Ut.empty(loginId)) {
 			return ResultData.from("F-1", "!! 아이디를 입력 해 주세요. !!");
 		}
@@ -82,7 +83,7 @@ public class UserMemberController {
 
 		Member member = userMemberService.getMemberByLoginId(loginId);
 
-		// PW 받기	
+		// PW 받기
 		if (Ut.empty(loginPw)) {
 			return ResultData.from("F-3", "!! 비밀번호가 입력되지 않았습니다. !!");
 		}
@@ -92,11 +93,28 @@ public class UserMemberController {
 
 		// session 에 정보 저장
 		httpsession.setAttribute("loginedMemberId", member.getId());
-		
+
 		return ResultData.from("S-1", Ut.f("!! 반갑습니다. %s님 ! :)", member.getNickname()));
 
 	}
 
+	// logout
+	@RequestMapping("/user/member/doLogout")
+	@ResponseBody
+	public ResultData doLogout(HttpSession httpsession) {
+		
+		boolean isLogined = false;
 
+		// 로그인 여부
+		if (httpsession.getAttribute("loginedMemberId") == null) {
+			isLogined = true;
+		} // 이미 로그아웃 상태
+		if (isLogined) {
+			return ResultData.from("F-1", "!! 로그인 후 이용 할 수 있습니다. !!");
+		}
+		
+		httpsession.removeAttribute("loginedMemberId");
+		return ResultData.from("S-1", "로그아웃 되었습니다. :)");
+	}
 
 }
