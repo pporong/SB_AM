@@ -17,6 +17,7 @@ public class UserMemberService {
 		this.memberRepository = memberRepository;
 	}
 
+	// join
 	public ResultData<Integer> join(String loginId, String loginPw, String name, String nickname, String cellphoneNum, String email) {
 		
 		// loginId 중복 체크
@@ -39,7 +40,14 @@ public class UserMemberService {
 	}
 	
 
-	private Member getMemberByLoginId(String loginId) {
+	// login
+	public void login(String loginId, String loginPw) {
+		
+		
+	}
+	
+
+	public Member getMemberByLoginId(String loginId) {
 		return memberRepository.getMemberByLoginId(loginId);
 	}
 
@@ -49,6 +57,10 @@ public class UserMemberService {
 	
 	public Member getMemberByNameAndEmail(String name, String email) {
 		return memberRepository.getMemberByNameAndEmail(name, email);
+	}
+
+	public boolean isLoginIdDup(String loginId) {
+		return memberRepository.isLoginIdDup(loginId);
 	}
 	
 }

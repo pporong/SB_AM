@@ -46,6 +46,21 @@ public interface MemberRepository {
 			AND M.email = #{email}
 				""")
 	Member getMemberByNameAndEmail(String name, String email);
+	
+	// login
+	@Select("""
+			SELECT *
+			FROM `member` AS M
+			WHERE M.loginId = #{loginId}
+				""")
+	public void login(String loginId, String loginPw);
+	
+	@Select("""
+			SELECT COUNT(*) > 0
+			FROM `member` AS M
+			WHERE M.loginId = #{loginId}
+				""")
+	public boolean isLoginIdDup(String loginId);
 
 
 }
