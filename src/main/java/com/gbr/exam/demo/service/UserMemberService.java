@@ -28,6 +28,7 @@ public class UserMemberService {
 		
 		// 이름 + 이메일 중복 체크
 		existsMember = getMemberByNameAndEmail(name, email);
+		
 		if (existsMember != null) {
 			return ResultData.from("F-8", Ut.f("!! 이미 사용중인 이름 [%s]과 이메일 [%s] 입니다. :( !!", name, email));
 		}
@@ -63,4 +64,5 @@ public class UserMemberService {
 		return memberRepository.isLoginIdDup(loginId);
 	}
 	
+
 }

@@ -1,5 +1,7 @@
 package com.gbr.exam.demo.controller;
 
+import javax.servlet.http.HttpSession;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -53,13 +55,23 @@ public class UserMemberController {
 		return ResultData.newData(joinRd, member);
 	}
 
+	// login
 	@RequestMapping("/user/member/doLogin")
 	@ResponseBody
-	public ResultData<Member> doLogin(String loginId, String loginPw) {
-		// ID 받기
-		if (loginId.length() == 0) {
+	public ResultData<Member> doLogin(HttpSession httpsession, String loginId, String loginPw) {
+		
+		boolean isLogined = false;
+		
+		// 로그인 여부
+		if (httpsession.getAttribute("loginedMemberId") != null) {
+			isLogined = true;
+		}
+		if (isLogined) {
+			return ResultData.from("F-5", "!! 이미 로그인 상태입니다. !!");
+		}
+		
+		if (Ut.empty(loginId)) {
 			return ResultData.from("F-1", "!! 아이디를 입력 해 주세요. !!");
-
 		}
 
 		boolean isLoginIdDup = userMemberService.isLoginIdDup(loginId);
@@ -70,26 +82,21 @@ public class UserMemberController {
 
 		Member member = userMemberService.getMemberByLoginId(loginId);
 
-		int tryMaxCount = 3;
-		int tryCount = 0;
-
-		while (true) {
-			if (tryCount >= tryMaxCount) {
-				return ResultData.from("F-3", "!! 비밀번호를 확인하고 다시 시도 해 주세요. !!");
-			}
-			// PW 받기
-			if (loginPw.length() == 0) {
-				tryCount++;
-				return ResultData.from("F-4", "!! 비밀번호가 입력되지 않았습니다. !!");
-			}
-
-			if (member.getLoginPw().equals(loginPw) == false) {
-				tryCount++;
-				return ResultData.from("F-5", "!! 비밀번호가 일치하지 않습니다. !!");
-
-			}
-			return ResultData.from("S-1", Ut.f("!! 반갑습니다. %s님 ! :)", loginId));
+		// PW 받기	
+		if (Ut.empty(loginPw)) {
+			return ResultData.from("F-3", "!! 비밀번호가 입력되지 않았습니다. !!");
+		}
+		if (member.getLoginPw().equals(loginPw) == false) {
+			return ResultData.from("F-4", "!! 비밀번호가 일치하지 않습니다. !!");
 		}
 
+		// session 에 정보 저장
+		httpsession.setAttribute("loginedMemberId", member.getId());
+		
+		return ResultData.from("S-1", Ut.f("!! 반갑습니다. %s님 ! :)", member.getNickname()));
+
 	}
+
+
+
 }
