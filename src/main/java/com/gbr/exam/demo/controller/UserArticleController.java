@@ -92,7 +92,7 @@ public class UserArticleController {
 	// Modify
 	@RequestMapping("/user/article/doModify")
 	@ResponseBody
-	public ResultData<Integer> doModify(HttpSession httpsession, int id, String title, String body) {
+	public ResultData doModify(HttpSession httpsession, int id, String title, String body) {
 		boolean isLogined = false;
 		int loginedMemberId = 0;
 
@@ -116,7 +116,7 @@ public class UserArticleController {
 
 		userArticleService.modifyArticle(id, title, body);
 
-		return ResultData.from("S-1", Ut.f("%d번 게시물이 수정되었습니다. :)", id), id);
+		return ResultData.from("S-1", Ut.f("%d번 게시물이 수정되었습니다. :)", id), article);
 	}
 
 	// Detail
