@@ -36,19 +36,20 @@ public class UserArticleController {
 		if (isLogined == false) {
 			return ResultData.from("F-A", "!! 로그인 후 이용 할 수 있습니다. !!");
 		}
-		
+
 		if (Ut.empty(title)) {
 			return ResultData.from("F-1", "!! 제목이 입력되지 않았습니다. 입력 해 주세요 !!");
-		} if (Ut.empty(body)) {
+		}
+		if (Ut.empty(body)) {
 			return ResultData.from("F-2", "!! 내용이 입력되지 않았습니다. 입력 해 주세요 !!");
 		}
-		
+
 		ResultData<Integer> writeArticleRd = userArticleService.writeArticle(loginedMemberId, title, body);
 
 		int id = (int) writeArticleRd.getData1();
-		
+
 		Article article = userArticleService.getArticle(id);
-		
+
 		return ResultData.newData(writeArticleRd, article);
 	}
 
@@ -57,8 +58,8 @@ public class UserArticleController {
 	@ResponseBody
 	public ResultData<List<Article>> getArticles() {
 		List<Article> articles = userArticleService.getArticles();
-		
-		return ResultData.from("S-1", "Article List" , articles);
+
+		return ResultData.from("S-1", "Article List", articles);
 	}
 
 	// Delete
@@ -93,6 +94,7 @@ public class UserArticleController {
 	@RequestMapping("/user/article/doModify")
 	@ResponseBody
 	public ResultData doModify(HttpSession httpsession, int id, String title, String body) {
+
 		boolean isLogined = false;
 		int loginedMemberId = 0;
 
@@ -104,19 +106,20 @@ public class UserArticleController {
 		if (isLogined == false) {
 			return ResultData.from("F-A", "!! 로그인 후 이용 해 주세요. !!");
 		}
-		Article article = userArticleService.getArticle(id);
 
+		Article article = userArticleService.getArticle(id);
 
 		if (article == null) {
 			return ResultData.from("F-1", Ut.f("!! %d번 게시물은 존재하지 않습니다. !!", id), id);
 		} // 수정 권한 체크
-		if (article.getMemberId() != loginedMemberId) {
-			return ResultData.from("F-B", "!! 수정 권한이 없습니다. !!");
+		ResultData actorCanModifyRd = userArticleService.actorCanModify(loginedMemberId, article);
+
+		if (actorCanModifyRd.isFail()) {
+			return actorCanModifyRd;
 		}
 
-		userArticleService.modifyArticle(id, title, body);
+		return userArticleService.modifyArticle(id, title, body);
 
-		return ResultData.from("S-1", Ut.f("%d번 게시물이 수정되었습니다. :)", id), article);
 	}
 
 	// Detail

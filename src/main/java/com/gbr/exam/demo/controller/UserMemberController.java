@@ -114,7 +114,9 @@ public class UserMemberController {
 		}
 		
 		httpsession.removeAttribute("loginedMemberId");
+		
 		return ResultData.from("S-1", "로그아웃 되었습니다. :)");
+
 	}
 
 }
