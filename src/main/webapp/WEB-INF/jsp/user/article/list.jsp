@@ -24,7 +24,7 @@
 				</thead>
 				<tbody>
 						<c:forEach var="article" items="${articles }">
-								<tr>
+								<tr> 
 										<td>${article.id}</td>
 										<td>${article.regDate}</td>
 										<td><a href="#"> ${article.title}</a></td>
