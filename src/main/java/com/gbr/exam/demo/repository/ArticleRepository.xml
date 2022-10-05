@@ -23,8 +23,16 @@
 		ORDER BY A.id DESC
 	</select>
 	
-	<select id ="getArticle" resultType="Article">
+<!-- 	<select id ="getArticle" resultType="Article">
 		SELECT * FROM article WHERE id = #{id}
+	</select> -->
+	
+	<select id ="getArticle" resultType="Article">
+		SELECT A.*, M.name AS writer
+		FROM article as A
+		INNER JOIN `member` as M
+		ON A.memberId = M.id
+		WHERE A.id = #{id}
 	</select>
 	
 	<delete id="deleteArticle">

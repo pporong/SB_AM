@@ -50,7 +50,7 @@ public class UserArticleController {
 
 		Article article = userArticleService.getArticle(id);
 
-		return ResultData.newData(writeArticleRd, article);
+		return ResultData.newData(writeArticleRd, "article", article);
 	}
 
 	// list = articles
@@ -59,7 +59,7 @@ public class UserArticleController {
 	public ResultData<List<Article>> getArticles() {
 		List<Article> articles = userArticleService.getArticles();
 
-		return ResultData.from("S-1", "Article List", articles);
+		return ResultData.from("S-1", "Article List", "articles", articles);
 	}
 
 	// Delete
@@ -80,14 +80,14 @@ public class UserArticleController {
 		Article article = userArticleService.getArticle(id);
 
 		if (article == null) {
-			return ResultData.from("F-1", Ut.f("!! %d번 게시물은 존재하지 않습니다. !!", id), id);
+			return ResultData.from("F-1", Ut.f("!! %d번 게시물은 존재하지 않습니다. !!", id), "id",  id);
 		} // 삭제 권한 체크
 		if (article.getMemberId() != loginedMemberId) {
 			return ResultData.from("F-B", "!! 삭제 권한이 없습니다. !!");
 		}
 
 		userArticleService.deleteArticle(id);
-		return ResultData.from("S-1", Ut.f("%d번 게시물이 삭제되었습니다. :)", id), id);
+		return ResultData.from("S-1", Ut.f("%d번 게시물이 삭제되었습니다. :)", id), "id", id);
 	}
 
 	// Modify
@@ -110,7 +110,7 @@ public class UserArticleController {
 		Article article = userArticleService.getArticle(id);
 
 		if (article == null) {
-			return ResultData.from("F-1", Ut.f("!! %d번 게시물은 존재하지 않습니다. !!", id), id);
+			return ResultData.from("F-1", Ut.f("!! %d번 게시물은 존재하지 않습니다. !!", id), "id", id);
 		} // 수정 권한 체크
 		ResultData actorCanModifyRd = userArticleService.actorCanModify(loginedMemberId, article);
 
@@ -132,7 +132,7 @@ public class UserArticleController {
 			return ResultData.from("F-1", Ut.f("!! %d번 게시물은 존재하지 않습니다. !!", id));
 		}
 
-		return ResultData.from("S-1", Ut.f("%d번 게시물입니다. :)", id), article);
+		return ResultData.from("S-1", Ut.f("%d번 게시물입니다. :)", id), "article", article);
 	}
 
 }

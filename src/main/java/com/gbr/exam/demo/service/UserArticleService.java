@@ -30,7 +30,7 @@ public class UserArticleService {
 		articleRepository.writeArticle(memberId, title, body);	
 		int id = articleRepository.getLastInsertId();
 		
-		return ResultData.from("S-1", "게시물이 생성되었습니다. :)", id);
+		return ResultData.from("S-1", "게시물이 생성되었습니다. :)", "id", id);
 	}
 	
 	// detail
@@ -49,7 +49,7 @@ public class UserArticleService {
 		
 		Article article = getArticle(id);
 		
-		return ResultData.from("S-1", Ut.f("%d번 게시물이 수정되었습니다. :)", id), article);
+		return ResultData.from("S-1", Ut.f("%d번 게시물이 수정되었습니다. :)", id), "article", article);
 	}
 
 	public ResultData actorCanModify(int loginedMemberId, Article article) {	

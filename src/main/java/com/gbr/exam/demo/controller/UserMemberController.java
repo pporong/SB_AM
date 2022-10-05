@@ -52,7 +52,7 @@ public class UserMemberController {
 
 		Member member = userMemberService.getMemberById(joinRd.getData1());
 
-		return ResultData.newData(joinRd, member);
+		return ResultData.newData(joinRd, "member", member);
 	}
 
 	// login

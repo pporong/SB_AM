@@ -37,7 +37,7 @@ public class UserMemberService {
 		
 		int id = memberRepository.getLastInsertId();
 		
-		return ResultData.from("S-1", "환영합니다!! :)", id);
+		return ResultData.from("S-1", "환영합니다!! :)", "id", id);
 	}
 	
 
