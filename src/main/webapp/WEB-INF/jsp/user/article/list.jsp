@@ -1,45 +1,42 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <c:set var="pageTitle" value="ARTICLE LIST" />
-<%@ include file="../common/head.jspf" %>
+<%@ include file="../common/head.jspf"%>
 
-<style>
-	h1 {
-		text-align: center;
-		color : navy;
-	}
-	.list_table {
-		text-align: center;
-		padding : 4px;
-		width: 500px;
-	}
-</style>
-	<hr />
-	<table class="list_table" border="1" bordercolor="pink" align="center">
-	
-		<thead class="title">
-			<tr>
-				<th>번 호</th>
-				<th>날 짜</th>
-				<th>제 목</th>
-				<th>작성자</th>
-			</tr>
-		</thead>
-		
-			<tbody class="body">
-				<c:forEach var="article" items="${articles }">
-					<tr> 
-						<td>${article.id}</td>
-						<td>${article.regDate.substring(0, 16)}</td>
-						<td><a href="#"> ${article.title}</a></td>
-						<td>${article.extra__writer}</td>
-					</tr>
-				</c:forEach>
-			</tbody>
+
+<section class="mt-8 text-xl">
+		<div class="container mx-auto px-3">
+			<div class="table-box-type-1">
 			
-	</table>
+				<table class="list_table" align="center">
+				
+					<!-- 리스트 타이틀 -->
+					<thead class="title">
+						<tr>
+							<th>번 호</th>
+							<th>제 목</th>
+							<th>작성자</th>
+							<th>날 짜</th>
+						</tr>
+					</thead>
+					
+					<!-- 리스트 바디 -->
+					<tbody class="body">
+						<c:forEach var="article" items="${articles }">
+							<tr>
+								<td>${article.id}</td>
+								<td><a class="hover:under-line" href="#"> ${article.title}</a></td>
+								<td>${article.extra__writer}</td>
+								<td>${article.regDate.substring(2, 16)}</td>
+							</tr>
+						</c:forEach>
+					</tbody>
+				
+				</table>
+				
+			</div>
+		</div>
+</section>
 
 
-
-
-<%@ include file="../common/foot.jspf" %>
+<%@ include file="../common/foot.jspf"%>
