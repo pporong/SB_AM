@@ -7,33 +7,45 @@
 <title>LIST</title>
 </head>
 <body>
+<style>
+	h1 {
+		text-align: center;
+		color : navy;
+	}
+	.list_table {
+		text-align: center;
+		padding : 4px;
+		width: 500px;
+		margin-top: 20px;
+	}
+</style>
+	<h1>LIST</h1>
+	
+	<hr />
 
-		<div>list</div>
-
-		<hr />
-
-		<table border="1">
-				<thead>
-						<tr>
-								<th>번호</th>
-								<th>날짜</th>
-								<th>제목</th>
-								<th>작성자</th>
-						</tr>
-
-				</thead>
-				<tbody>
-						<c:forEach var="article" items="${articles }">
-								<tr> 
-										<td>${article.id}</td>
-										<td>${article.regDate}</td>
-										<td><a href="#"> ${article.title}</a></td>
-										<td>${article.extra__writer}</td>
-								</tr>
-						</c:forEach>
-				</tbody>
-
-		</table>
+	<table class="list_table" border="1" bordercolor="pink" align="center">
+	
+		<thead class="title">
+			<tr>
+				<th>번 호</th>
+				<th>날 짜</th>
+				<th>제 목</th>
+				<th>작성자</th>
+			</tr>
+		</thead>
+		
+			<tbody class="body">
+				<c:forEach var="article" items="${articles }">
+					<tr> 
+						<td>${article.id}</td>
+						<td>${article.regDate.substring(0, 10)}</td>
+						<td><a href="#"> ${article.title}</a></td>
+						<td>${article.extra__writer}</td>
+					</tr>
+				</c:forEach>
+			</tbody>
+			
+	</table>
 
 
 

@@ -3,16 +3,38 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title> 메인페이지 </title>
+<title> MAIN PAGE </title>
 </head>
 <body>
-		<h1> 메인페이지 </h1>
+<style>
+	h1 {
+		text-align: center;
+		color : navy;
+	}
+</style>
+
+		<h1> Main Page </h1>
 		
-		<div>Lorem ipsum dolor sit amet, consectetur adipisicing elit.
-		 Harum voluptatum soluta nam perspiciatis earum consequatur dignissimos eaque ut modi 
-		 animi voluptates fugit perferendis maiores consectetur nostrum mollitia ratione et ipsam.
-		 Lorem ipsum dolor sit amet, consectetur adipisicing elit. Eveniet eum ipsam quasi sunt a
-		 quis voluptate aut voluptatibus quia deleniti ratione sit rerum! Modi culpa hic quis officia 
-		 maiores deserunt.</div>
+		<header>
+			<div class="logo_box"><a href="#">logo</a></div>
+
+			<ul class="">
+				<li><a href="/">HOME</a></li>
+				<li><a href="/user/article/list">LIST</a></li>
+			</ul>
+		</header>
+		
+		<div>
+			Lorem ipsum dolor sit amet, consectetur adipisicing elit. Laudantium ullam dignissimos.
+			 Quis provident temporibus maiores dolore sequi quisquam rerum nesciunt quasi labore nobis 
+			 ipsam repellat iure ipsa similique minima quae.Lorem ipsum dolor sit amet, 
+			 consectetur adipisicing elit. Mollitia veniam nostrum illum omnis asperiores 
+			 dicta earum odio totam sint aspernatur iusto quo repellat unde reprehenderit ex qui vel expedita provident.
+			 Lorem ipsum dolor sit amet, consectetur adipisicing elit. Error dolor saepe itaque nobis? Blanditiis quas esse 
+			 nihil nemo neque animi aut officia soluta accusantium nam repellendus fugiat delectus provident. Officiis.
+			 Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quod deserunt cupiditate aperiam nobis magni
+			 voluptate quae asperiores aspernatur mollitia repudiandae quibusdam provident quasi repellat temporibus saepe ducimus vel veniam vero!
+		</div>		
+
 </body>
 </html>

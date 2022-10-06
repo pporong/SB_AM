@@ -55,7 +55,7 @@ public class UserArticleController {
 	}
 
 	// list = Articles
-	@RequestMapping("/user/article/getArticles")
+	@RequestMapping("/user/article/list")
 	public String showList(Model model) {
 		List<Article> articles = userArticleService.getArticles();
 		
@@ -124,17 +124,37 @@ public class UserArticleController {
 
 	}
 
+	/*
+	 * // Detail
+	 * 
+	 * @RequestMapping("/user/article/getArticle")
+	 * 
+	 * @ResponseBody public ResultData<Article> getArticle(int id) { Article article
+	 * = userArticleService.getArticle(id);
+	 * 
+	 * if (article == null) { return ResultData.from("F-1",
+	 * Ut.f("!! %d번 게시물은 존재하지 않습니다. !!", id)); }
+	 * 
+	 * return ResultData.from("S-1", Ut.f("%d번 게시물입니다. :)", id), "article",
+	 * article); }
+	 */
+	
 	// Detail
 	@RequestMapping("/user/article/getArticle")
-	@ResponseBody
-	public ResultData<Article> getArticle(int id) {
+	public String showDetail(Model model) {
+		
 		Article article = userArticleService.getArticle(id);
+		
+		model.addAttribute("id",article);
 
 		if (article == null) {
 			return ResultData.from("F-1", Ut.f("!! %d번 게시물은 존재하지 않습니다. !!", id));
 		}
 
 		return ResultData.from("S-1", Ut.f("%d번 게시물입니다. :)", id), "article", article);
+		
+		return "user/article/detail";
 	}
 
+	
 }
