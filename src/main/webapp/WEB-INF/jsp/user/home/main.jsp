@@ -4,6 +4,8 @@
 <head>
 <meta charset="UTF-8">
 <title> MAIN PAGE </title>
+<link rel="stylesheet" href="/resource/common.css" />
+<script src="/resource/common.js" defer="defer"></script>
 </head>
 <body>
 <style>
@@ -34,6 +36,7 @@
 			 nihil nemo neque animi aut officia soluta accusantium nam repellendus fugiat delectus provident. Officiis.
 			 Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quod deserunt cupiditate aperiam nobis magni
 			 voluptate quae asperiores aspernatur mollitia repudiandae quibusdam provident quasi repellat temporibus saepe ducimus vel veniam vero!
+			 만나서 반가우ㅓ요!
 		</div>		
 
 </body>
