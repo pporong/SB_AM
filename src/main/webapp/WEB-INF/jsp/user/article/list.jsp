@@ -1,14 +1,8 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
-<!DOCTYPE html>
-<html>
-<head>
-<meta charset="UTF-8">
-<title>LIST</title>
-<link rel="stylesheet" href="/resource/common.css" />
-<script src="/resource/common.js" defer="defer"></script>
-</head>
-<body>
+<c:set var="pageTitle" value="ARTICLE LIST" />
+<%@ include file="../common/head.jspf" %>
+
 <style>
 	h1 {
 		text-align: center;
@@ -18,13 +12,9 @@
 		text-align: center;
 		padding : 4px;
 		width: 500px;
-		margin-top: 20px;
 	}
 </style>
-	<h1>LIST</h1>
-	
 	<hr />
-
 	<table class="list_table" border="1" bordercolor="pink" align="center">
 	
 		<thead class="title">
@@ -40,7 +30,7 @@
 				<c:forEach var="article" items="${articles }">
 					<tr> 
 						<td>${article.id}</td>
-						<td>${article.regDate.substring(0, 10)}</td>
+						<td>${article.regDate.substring(0, 16)}</td>
 						<td><a href="#"> ${article.title}</a></td>
 						<td>${article.extra__writer}</td>
 					</tr>
@@ -52,7 +42,4 @@
 
 
 
-
-
-</body>
-</html>
+<%@ include file="../common/foot.jspf" %>

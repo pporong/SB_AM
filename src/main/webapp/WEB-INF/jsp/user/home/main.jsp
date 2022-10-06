@@ -1,31 +1,10 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
-<!DOCTYPE html>
-<html>
-<head>
-<meta charset="UTF-8">
-<title> MAIN PAGE </title>
-<link rel="stylesheet" href="/resource/common.css" />
-<script src="/resource/common.js" defer="defer"></script>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
+<c:set var="pageTitle" value="MAIN" />
+<%@ include file="../common/head.jspf"%>
 </head>
 <body>
-<style>
-	h1 {
-		text-align: center;
-		color : navy;
-	}
-</style>
 
-		<h1> Main Page </h1>
-		
-		<header>
-			<div class="logo_box"><a href="#">logo</a></div>
-
-			<ul class="">
-				<li><a href="/">HOME</a></li>
-				<li><a href="/user/article/list">LIST</a></li>
-			</ul>
-		</header>
-		
 		<div>
 			Lorem ipsum dolor sit amet, consectetur adipisicing elit. Laudantium ullam dignissimos.
 			 Quis provident temporibus maiores dolore sequi quisquam rerum nesciunt quasi labore nobis 
@@ -36,8 +15,8 @@
 			 nihil nemo neque animi aut officia soluta accusantium nam repellendus fugiat delectus provident. Officiis.
 			 Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quod deserunt cupiditate aperiam nobis magni
 			 voluptate quae asperiores aspernatur mollitia repudiandae quibusdam provident quasi repellat temporibus saepe ducimus vel veniam vero!
+			 ㅎㅎㅎ
 			 만나서 반가우ㅓ요!
 		</div>		
 
-</body>
-</html>
+<%@ include file="../common/foot.jspf" %>
