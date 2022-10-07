@@ -16,7 +16,7 @@
 	</select> -->
 	
 	<select id="getArticles" resultType="Article">
-		SELECT A.*, M.name AS extra__writer
+		SELECT A.*, M.name AS extra__writerName
 		FROM article as A
 		INNER JOIN `member` as M
 		ON A.memberId = M.id
@@ -28,7 +28,7 @@
 	</select> -->
 	
 	<select id ="getArticle" resultType="Article">
-		SELECT A.*, M.name AS extra__writer
+		SELECT A.*, M.name AS extra__writerName
 		FROM article as A
 		INNER JOIN `member` as M
 		ON A.memberId = M.id

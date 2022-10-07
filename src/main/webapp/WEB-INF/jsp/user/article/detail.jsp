@@ -23,7 +23,7 @@
 							</tr>	
 							<tr>
 								<th>작 성 자</th>
-								<td>${article.extra__writer}</td>		
+								<td>${article.extra__writerName}</td>		
 							</tr>	
 							<tr>
 								<th>작 성 날 짜</th>
@@ -44,7 +44,7 @@
 					</tbody>	
 				</table>
 			</div>
-			<div class="btn-box">
+			<div class="btn-box hover:text-blue-800">
 				<button type="button" onclick="history.back();">뒤로가기</button>
 			</div>
 			
