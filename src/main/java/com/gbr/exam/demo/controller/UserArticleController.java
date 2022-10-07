@@ -123,21 +123,6 @@ public class UserArticleController {
 		return userArticleService.modifyArticle(id, title, body);
 
 	}
-
-	/*
-	 * // Detail
-	 * 
-	 * @RequestMapping("/user/article/getArticle")
-	 * 
-	 * @ResponseBody public ResultData<Article> getArticle(int id) { Article article
-	 * = userArticleService.getArticle(id);
-	 * 
-	 * if (article == null) { return ResultData.from("F-1",
-	 * Ut.f("!! %d번 게시물은 존재하지 않습니다. !!", id)); }
-	 * 
-	 * return ResultData.from("S-1", Ut.f("%d번 게시물입니다. :)", id), "article",
-	 * article); }
-	 */
 	
 	// Detail
 	@RequestMapping("/user/article/detail")

@@ -23,7 +23,15 @@
 							</tr>	
 							<tr>
 								<th>작 성 자</th>
-								<td>${article.writer}</td>		
+								<td>${article.extra__writer}</td>		
+							</tr>	
+							<tr>
+								<th>작 성 날 짜</th>
+								<td>${article.regDate}</td>		
+							</tr>	
+							<tr>
+								<th>수 정 날 짜</th>
+								<td>${article.updateDate}</td>		
 							</tr>	
 							<tr>
 								<th>제 목</th>
@@ -33,15 +41,11 @@
 								<th>내 용</th>
 								<td>${article.body}</td>		
 							</tr>	
-							<tr>
-								<th>날 짜</th>
-								<td>${article.regDate}</td>		
-							</tr>	
 					</tbody>	
 				</table>
 			</div>
 			<div class="btn-box">
-			
+				<button type="button" onclick="history.back();">뒤로가기</button>
 			</div>
 			
 		</div>
