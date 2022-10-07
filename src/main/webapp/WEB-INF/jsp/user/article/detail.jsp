@@ -44,11 +44,19 @@
 					</tbody>	
 				</table>
 			</div>
-			<div class="btn-box hover:text-blue-800">
-				<button type="button" onclick="history.back();">뒤로가기</button>
+			<div class="btn-box flex justify-end">
+			
+				<a class="hover:text-green-500 m-1 " href="../article/modify?id=${article.id }">수정</a>
+			<c:if test="${article.extra__actorCanDelete }">
+				<a class="hover:text-pink-600  m-1" onclick="if(confirm('정말 삭제 하시겠습니까?') == false) return false;" href="../article/doDelete?id=${article.id }">삭제</a>
+			</c:if>
+				
+				<button class="hover:text-blue-800 m-1" type="button" onclick="history.back();">뒤로가기</button>
 			</div>
 			
 		</div>
 </section>
+
+
 
 <%@ include file="../common/foot.jspf"%>

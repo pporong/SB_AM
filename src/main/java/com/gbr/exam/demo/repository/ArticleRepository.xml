@@ -27,10 +27,10 @@
 		SELECT * FROM article WHERE id = #{id}
 	</select> -->
 	
-	<select id ="getArticle" resultType="Article">
+	<select id ="getForPrintArticle" resultType="Article">
 		SELECT A.*, M.name AS extra__writerName
 		FROM article as A
-		INNER JOIN `member` as M
+		LEFT JOIN `member` as M
 		ON A.memberId = M.id
 		WHERE A.id = #{id}
 	</select>

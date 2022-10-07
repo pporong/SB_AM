@@ -5,7 +5,7 @@
 </head>
 <body>
 
-		<div>
+		<div class="con">
 			Lorem ipsum dolor sit amet, consectetur adipisicing elit. Laudantium ullam dignissimos.
 			 Quis provident temporibus maiores dolore sequi quisquam rerum nesciunt quasi labore nobis 
 			 ipsam repellat iure ipsa similique minima quae.Lorem ipsum dolor sit amet, 
