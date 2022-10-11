@@ -26,7 +26,7 @@ public class UserArticleController {
 	// Add = write
 	@RequestMapping("/user/article/doAdd")
 	@ResponseBody
-	public ResultData<Article> doAdd(String title, String body) {
+	public ResultData<Article> doAdd(HttpServletRequest req, String title, String body) {
 		
 		Rq rq = new Rq(req);
 		
@@ -53,7 +53,7 @@ public class UserArticleController {
 
 	// list = Articles
 	@RequestMapping("/user/article/list")
-	public String showList(Model model) {
+	public String showList(HttpServletRequest req, Model model) {
 		
 		Rq rq = new Rq(req);
 
@@ -67,7 +67,7 @@ public class UserArticleController {
 	// Delete
 	@RequestMapping("/user/article/doDelete")
 	@ResponseBody
-	public String doDelete(int id) {
+	public String doDelete(HttpServletRequest req, int id) {
 		
 		Rq rq = new Rq(req);
 		
@@ -91,7 +91,7 @@ public class UserArticleController {
 	// Modify
 	@RequestMapping("/user/article/doModify")
 	@ResponseBody
-	public ResultData doModify(int id, String title, String body) {
+	public ResultData doModify(HttpServletRequest req, int id, String title, String body) {
 
 		Rq rq = new Rq(req);
 		
@@ -117,7 +117,7 @@ public class UserArticleController {
 	
 	// Detail
 	@RequestMapping("/user/article/detail")
-	public String showDetail(Model model, int id) {
+	public String showDetail(HttpServletRequest req, Model model, int id) {
 		
 		Rq rq = new Rq(req);
 
