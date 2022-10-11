@@ -33,7 +33,9 @@ public class UserArticleController {
 		if (httpsession.getAttribute("loginedMemberId") != null) {
 			isLogined = true;
 			loginedMemberId = (int) httpsession.getAttribute("loginedMemberId");
-		} // 이미 로그아웃 상태
+		}
+		
+		// 이미 로그아웃 상태
 		if (isLogined == false) {
 			return ResultData.from("F-A", "!! 로그인 후 이용 할 수 있습니다. !!");
 		}
@@ -76,7 +78,7 @@ public class UserArticleController {
 	// Delete
 	@RequestMapping("/user/article/doDelete")
 	@ResponseBody
-	public ResultData<Integer> doDelete(HttpSession httpsession, int id) {
+	public String doDelete(HttpSession httpsession, int id) {
 		boolean isLogined = false;
 		int loginedMemberId = 0;
 
@@ -86,19 +88,19 @@ public class UserArticleController {
 			loginedMemberId = (int) httpsession.getAttribute("loginedMemberId");
 		} // 이미 로그아웃 상태
 		if (isLogined == false) {
-			return ResultData.from("F-A", "!! 로그인 후 이용 해 주세요. !!");
+			return Ut.jsHisoryBack( "!! 로그인 후 이용 해 주세요. !!");
 		}
 		Article article = userArticleService.getForPrintArticle(loginedMemberId, id);
 
 		if (article == null) {
-			return ResultData.from("F-1", Ut.f("!! %d번 게시물은 존재하지 않습니다. !!", id), "id",  id);
+			return Ut.jsHisoryBack(Ut.f("!! %d번 게시물은 존재하지 않습니다. !!", id));
 		} // 삭제 권한 체크
 		if (article.getMemberId() != loginedMemberId) {
-			return ResultData.from("F-B", "!! 삭제 권한이 없습니다. !!");
+			return Ut.jsHisoryBack(Ut.f("!! 삭제 권한이 없습니다. !!"));
 		}
 
 		userArticleService.deleteArticle(id);
-		return ResultData.from("S-1", Ut.f("%d번 게시물이 삭제되었습니다. :)", id), "id", id);
+		return Ut.jsReplace(Ut.f("%d번 게시물이 삭제되었습니다. :)", id), "../article/list");
 	}
 
 	// Modify
