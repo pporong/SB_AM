@@ -88,7 +88,7 @@ public class UserArticleController {
 		if (isLogined == false) {
 			return ResultData.from("F-A", "!! 로그인 후 이용 해 주세요. !!");
 		}
-		Article article = userArticleService.getForPrintArticle(id);
+		Article article = userArticleService.getForPrintArticle(loginedMemberId, id);
 
 		if (article == null) {
 			return ResultData.from("F-1", Ut.f("!! %d번 게시물은 존재하지 않습니다. !!", id), "id",  id);
@@ -118,7 +118,7 @@ public class UserArticleController {
 			return ResultData.from("F-A", "!! 로그인 후 이용 해 주세요. !!");
 		}
 
-		Article article = userArticleService.getForPrintArticle(id);
+		Article article = userArticleService.getForPrintArticle(loginedMemberId, id);
 
 		if (article == null) {
 			return ResultData.from("F-1", Ut.f("!! %d번 게시물은 존재하지 않습니다. !!", id), "id", id);
@@ -135,12 +135,20 @@ public class UserArticleController {
 	
 	// Detail
 	@RequestMapping("/user/article/detail")
-	public String showDetail(Model model, int id) {
+	public String showDetail(HttpSession httpsession, Model model, int id) {
 		
-		Article article = userArticleService.getForPrintArticle(id);
-		
+		boolean isLogined = false;
+		int loginedMemberId = 0;
+
+		if (httpsession.getAttribute("loginedMemberId") != null) {
+			isLogined = true;
+			loginedMemberId = (int) httpsession.getAttribute("loginedMemberId");
+		}
+
+		Article article = userArticleService.getForPrintArticle(loginedMemberId, id);
+
 		model.addAttribute("article", article);
-		
+
 		return "user/article/detail";
 	}
 
