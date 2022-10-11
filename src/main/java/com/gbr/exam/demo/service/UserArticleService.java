@@ -2,6 +2,8 @@ package com.gbr.exam.demo.service;
 
 import java.util.List;
 
+import javax.servlet.http.HttpSession;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -91,6 +93,7 @@ public class UserArticleService {
 		
 		return ResultData.from("S-1", " == 삭제 가능 ==");
 	}
+	
 
 
 }
