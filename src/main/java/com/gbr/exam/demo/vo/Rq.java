@@ -26,5 +26,4 @@ public class Rq {
 		this.loginedMemberId = loginedMemberId;
 	}
 	
-
 }

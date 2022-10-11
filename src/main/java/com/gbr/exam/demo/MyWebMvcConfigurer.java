@@ -19,6 +19,5 @@ public class MyWebMvcConfigurer implements WebMvcConfigurer {
 	public void addIntertceptors(InterceptorRegistry registry) {
 		registry.addInterceptor(beforeActionInterceptor).addPathPatterns("/**").excludePathPatterns("/resource/**").excludePathPatterns("/error");
 	}
-
 	
 }

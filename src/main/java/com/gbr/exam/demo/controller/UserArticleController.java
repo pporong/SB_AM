@@ -28,7 +28,7 @@ public class UserArticleController {
 	@ResponseBody
 	public ResultData<Article> doAdd(HttpServletRequest req, String title, String body) {
 		
-		Rq rq = new Rq(req);
+		Rq rq = (Rq) req.getAttribute("rq");
 		
 		// 이미 로그아웃 상태
 		if (rq.isLogined() == false) {
@@ -55,7 +55,7 @@ public class UserArticleController {
 	@RequestMapping("/user/article/list")
 	public String showList(HttpServletRequest req, Model model) {
 		
-		Rq rq = new Rq(req);
+		Rq rq = (Rq) req.getAttribute("rq");
 
 		List<Article> articles = userArticleService.getForPrintArticles(rq.getLoginedMemberId());
 		
@@ -69,7 +69,7 @@ public class UserArticleController {
 	@ResponseBody
 	public String doDelete(HttpServletRequest req, int id) {
 		
-		Rq rq = new Rq(req);
+		Rq rq = (Rq) req.getAttribute("rq");
 		
 		// 이미 로그아웃 상태
 		if (rq.isLogined() == false) {
@@ -93,7 +93,7 @@ public class UserArticleController {
 	@ResponseBody
 	public ResultData doModify(HttpServletRequest req, int id, String title, String body) {
 
-		Rq rq = new Rq(req);
+		Rq rq = (Rq) req.getAttribute("rq");
 		
 		// 이미 로그아웃 상태
 		if (rq.isLogined() == false) {
@@ -119,7 +119,7 @@ public class UserArticleController {
 	@RequestMapping("/user/article/detail")
 	public String showDetail(HttpServletRequest req, Model model, int id) {
 		
-		Rq rq = new Rq(req);
+		Rq rq = (Rq) req.getAttribute("rq");
 
 		Article article = userArticleService.getForPrintArticle(rq.getLoginedMemberId(), id);
 
