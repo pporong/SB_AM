@@ -17,7 +17,6 @@ public class Rq {
 		boolean isLogined = false;
 		int loginedMemberId = 0;
 		
-		// 로그인 여부
 		if (httpSession.getAttribute("loginedMemberId") != null) {
 			isLogined = true;
 			loginedMemberId = (int) httpSession.getAttribute("loginedMemberId");
